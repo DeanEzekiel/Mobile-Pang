@@ -1,0 +1,48 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace MobilePang
+{
+    public abstract class ASingleton<T> : MonoBehaviour where T : MonoBehaviour
+    {
+        #region Singleton Instance
+
+        private static readonly object s_lock = new object();
+        private static T s_instance;
+        // the instance
+        public static T Helper
+        {
+            get
+            {
+                lock (s_lock)
+                {
+                    if (s_instance == null)
+                    {
+                        s_instance = FindObjectOfType<T>();
+                    }
+
+                    return s_instance;
+                }
+            }
+        }
+
+        #endregion
+
+        protected virtual void Awake()
+        {
+            InitSingleton();
+            DontDestroyOnLoad(gameObject);
+        }
+
+        private void InitSingleton()
+        {
+            if (Helper.GetInstanceID() != GetInstanceID())
+            {
+                Debug.LogWarning($"Cannot have more than 1 instances. " +
+                    $"Destroying {gameObject.name}", gameObject);
+                Destroy(gameObject);
+            }
+        }
+    }
+}
