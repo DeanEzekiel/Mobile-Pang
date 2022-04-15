@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 
-public abstract class AScaler : MonoBehaviour
+namespace MobilePang
 {
-    protected SpriteRenderer sr;
-
-    protected float worldScreenHeight;
-    protected float worldScreenWidth;
-
-    protected void Start()
+    public abstract class AScaler : MonoBehaviour
     {
-        sr = GetComponent<SpriteRenderer>();
-        GetScreenDimensions();
-        Scale();
+        protected SpriteRenderer sr;
+
+        protected float worldScreenHeight;
+        protected float worldScreenWidth;
+
+        protected void Start()
+        {
+            sr = GetComponent<SpriteRenderer>();
+            GetScreenDimensions();
+            Scale();
+        }
+
+        private void GetScreenDimensions()
+        {
+            worldScreenHeight = Camera.main.orthographicSize * 2;
+            worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
+
+        }
+
+        protected abstract void Scale();
     }
-
-    private void GetScreenDimensions()
-    {
-        worldScreenHeight = Camera.main.orthographicSize * 2;
-        worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
-
-    }
-
-    protected abstract void Scale();
 }

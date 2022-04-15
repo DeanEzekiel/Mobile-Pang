@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MobilePang;
 
-namespace MobilePang
+namespace MobilePang.View
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerView : MVCHelper
@@ -17,11 +18,19 @@ namespace MobilePang
         #endregion
 
         #region Implementation
-        public void Move(Vector3 movementDirection)
+        public void Move(Direction direction)
         {
-            //transform.Translate(
-            //    (movementDirection * Model.Player.Speed * Time.deltaTime),
-            //    Space.World);
+            Vector3 movementDirection = Vector3.zero;
+
+            if(direction == Direction.Left)
+            {
+                movementDirection = Vector3.left;
+            }
+            else if(direction == Direction.Right)
+            {
+                movementDirection = Vector3.right;
+            }
+
             m_Rigidbody.MovePosition(transform.position + movementDirection *
                 Time.deltaTime * Model.Player.Speed);
         }

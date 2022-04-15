@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 
-public class ScaleToScreen : AScaler
+namespace MobilePang
 {
-    protected override void Scale()
+    public class ScaleToScreen : AScaler
     {
-        transform.localScale = new Vector3(
-            worldScreenWidth / sr.sprite.bounds.size.x,
-            worldScreenHeight / sr.sprite.bounds.size.y,
-            1);
+        protected override void Scale()
+        {
+            transform.localScale = new Vector3(
+                worldScreenWidth / sr.sprite.bounds.size.x,
+                worldScreenHeight / sr.sprite.bounds.size.y,
+                1);
+        }
     }
 }

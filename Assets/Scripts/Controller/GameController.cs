@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MobilePang;
 
-namespace MobilePang
+namespace MobilePang.Controller
 {
     public class GameController : MVCHelper
     {

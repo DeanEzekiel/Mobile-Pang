@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MobilePang;
 
-namespace MobilePang
+namespace MobilePang.View
 {
     public class GameView : MVCHelper
     {

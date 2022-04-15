@@ -1,13 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MobilePang;
+using MobilePang.View;
 
-namespace MobilePang
+namespace MobilePang.Controller
 {
     public class PlayerController : MVCHelper
     {
-
         #region Unity Callbacks
+
+        private void OnEnable()
+        {
+            MobileInputView.MoveToDirection += MoveTo;
+            MobileInputView.Shoot += Shoot;
+        }
+
+        private void OnDisable()
+        {
+            MobileInputView.MoveToDirection -= MoveTo;
+            MobileInputView.Shoot -= Shoot;
+        }
+
         private void FixedUpdate()
         {
             MovementControl();
@@ -20,14 +34,22 @@ namespace MobilePang
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                View.Player.Move(Vector3.left);
+                MoveTo(Direction.Left)
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
-                View.Player.Move(Vector3.right);
+                MoveTo(Direction.Right);
             }
+        }
 
-            
+        private void MoveTo(Direction direction)
+        {
+            View.Player.Move(direction);
+        }
+
+        private void Shoot()
+        {
+            print("Test Shoot");
         }
         #endregion
     }

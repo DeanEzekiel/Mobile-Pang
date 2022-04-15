@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScaleToPartScreen : AScaler
+namespace MobilePang
 {
-    [SerializeField]
-    private float divideWidth;
-    [SerializeField]
-    private float divideHeight;
-
-    protected override void Scale()
+    public class ScaleToPartScreen : AScaler
     {
-        transform.localScale = new Vector3(
-            (worldScreenWidth / sr.sprite.bounds.size.x / divideWidth),
-            (worldScreenHeight / sr.sprite.bounds.size.y / divideHeight),
-            1);
+        [SerializeField]
+        private float divideWidth;
+        [SerializeField]
+        private float divideHeight;
+
+        protected override void Scale()
+        {
+            transform.localScale = new Vector3(
+                (worldScreenWidth / sr.sprite.bounds.size.x / divideWidth),
+                (worldScreenHeight / sr.sprite.bounds.size.y / divideHeight),
+                1);
+        }
     }
 }
