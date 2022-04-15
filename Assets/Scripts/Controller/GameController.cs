@@ -1,17 +1,30 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace MobilePang
 {
-    public class GameController : MonoBehaviour
+    public class GameController : MVCHelper
     {
-        private void Start()
-        {
-            Main.Helper.View.DisplaySomeString(Main.Helper.Model.SomeString);
+        #region Controllers
+        [SerializeField]
+        private PlayerController Player;
+        #endregion
 
-            Main.Helper.Model.SomeString = "modified string";
-            Main.Helper.View.DisplaySomeString(Main.Helper.Model.SomeString);
+        #region Events
+        public static event Action ResetPlayer;
+        #endregion
+
+        #region Unity Callbacks
+        #endregion
+
+        #region Implementation
+        [ContextMenu("Reset Player Model")]
+        private void ResetPlayerModel()
+        {
+            ResetPlayer?.Invoke();
         }
+        #endregion
     }
 }

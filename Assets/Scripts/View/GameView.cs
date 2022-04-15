@@ -4,11 +4,8 @@ using UnityEngine;
 
 namespace MobilePang
 {
-    public class GameView : MonoBehaviour
+    public class GameView : MVCHelper
     {
-        public void DisplaySomeString(string someString)
-        {
-            print($"Current value: {someString}");
-        }
+        public PlayerView Player;
     }
 }

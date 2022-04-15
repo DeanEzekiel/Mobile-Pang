@@ -2,17 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace MobilePang
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerController : MVCHelper
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        #region Unity Callbacks
+        private void FixedUpdate()
+        {
+            MovementControl();
+        }
+
+        #endregion
+
+        #region Implementation
+        private void MovementControl()
+        {
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                View.Player.Move(Vector3.left);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                View.Player.Move(Vector3.right);
+            }
+
+            
+        }
+        #endregion
     }
 }
