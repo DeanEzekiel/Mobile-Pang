@@ -11,7 +11,7 @@ namespace MobilePang
         private static readonly object s_lock = new object();
         private static T s_instance;
         // the instance
-        public static T Helper
+        public static T Instance
         {
             get
             {
@@ -37,7 +37,7 @@ namespace MobilePang
 
         private void InitSingleton()
         {
-            if (Helper.GetInstanceID() != GetInstanceID())
+            if (Instance.GetInstanceID() != GetInstanceID())
             {
                 Debug.LogWarning($"Cannot have more than 1 instances. " +
                     $"Destroying {gameObject.name}", gameObject);
