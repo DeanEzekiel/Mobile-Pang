@@ -7,9 +7,9 @@ namespace MobilePang
     public class GameModel : MVCHelper
     {
         #region Models
-        public PlayerModel Player;
+        public PlayerModel_SO Player;
         [SerializeField]
-        private PlayerModel _player;
+        private PlayerModel_SO _initPlayer;
         #endregion
 
         #region Unity Callbacks
@@ -27,10 +27,10 @@ namespace MobilePang
         #region Implementation
         private void ResetPlayer()
         {
-            Player.Life = _player.Life;
-            Player.Speed = _player.Speed;
-            Player.ShootCooldown = _player.ShootCooldown;
-            Player.IsProtected = _player.IsProtected;
+            Player.Life = _initPlayer.Life;
+            Player.Speed = _initPlayer.Speed;
+            Player.ShootCooldown = _initPlayer.ShootCooldown;
+            Player.IsProtected = _initPlayer.IsProtected;
         }
         #endregion
     }

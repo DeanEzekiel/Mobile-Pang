@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 11400000, guid: 2eb22b075b822431e89d8da1ad4da04d, type: 2}
-  _player: {fileID: 11400000, guid: 91727eab9c8984b69bd66e48f450f87c, type: 2}
+  _initPlayer: {fileID: 11400000, guid: 91727eab9c8984b69bd66e48f450f87c, type: 2}
 --- !u!4 &220714934
 Transform:
   m_ObjectHideFlags: 0
