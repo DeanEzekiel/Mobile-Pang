@@ -34,7 +34,7 @@ namespace MobilePang.Controller
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                MoveTo(Direction.Left)
+                MoveTo(Direction.Left);
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
