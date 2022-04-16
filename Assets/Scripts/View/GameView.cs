@@ -8,5 +8,8 @@ namespace MobilePang.View
     public class GameView : MVCHelper
     {
         public PlayerView Player;
+
+        public Transform AmmoPoolContainer;
+        public Transform BallPoolContainer;
     }
 }

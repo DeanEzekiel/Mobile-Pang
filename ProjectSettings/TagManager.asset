@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ball
+  - Wall
+  - Block
+  - Bullet
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -16,8 +21,8 @@ TagManager:
   - Wall
   - Ball
   - Block
-  - 
-  - 
+  - Bullet
+  - Player
   - 
   - 
   - 

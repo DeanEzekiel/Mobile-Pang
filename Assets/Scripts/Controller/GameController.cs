@@ -11,6 +11,10 @@ namespace MobilePang.Controller
         #region Controllers
         [SerializeField]
         private PlayerController Player;
+        [SerializeField]
+        public AmmoController Ammo;
+        [SerializeField]
+        public BallController Ball;
         #endregion
 
         #region Events
@@ -25,6 +29,11 @@ namespace MobilePang.Controller
         private void ResetPlayerModel()
         {
             ResetPlayer?.Invoke();
+        }
+
+        public void AddPoints(int pointsEarned)
+        {
+            Model.AddScore(pointsEarned);
         }
         #endregion
     }

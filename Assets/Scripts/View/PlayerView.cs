@@ -10,6 +10,8 @@ namespace MobilePang.View
     {
         Rigidbody2D m_Rigidbody;
 
+        public Transform SpawnPoint;
+
         #region Unity Callbacks
         private void Start()
         {

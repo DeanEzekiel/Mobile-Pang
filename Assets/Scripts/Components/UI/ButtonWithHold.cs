@@ -2,20 +2,23 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ButtonWithHold : Button
+namespace MobilePang
 {
-    public bool IsHeld = false;
-    // Button is Pressed
-    public override void OnPointerDown(PointerEventData eventData)
+    public class ButtonWithHold : Button
     {
-        base.OnPointerDown(eventData);
-        IsHeld = true;
-    }
+        public bool IsHeld = false;
+        // Button is Pressed
+        public override void OnPointerDown(PointerEventData eventData)
+        {
+            base.OnPointerDown(eventData);
+            IsHeld = true;
+        }
 
-    // Button is released
-    public override void OnPointerUp(PointerEventData eventData)
-    {
-        base.OnPointerUp(eventData);
-        IsHeld = false;
+        // Button is released
+        public override void OnPointerUp(PointerEventData eventData)
+        {
+            base.OnPointerUp(eventData);
+            IsHeld = false;
+        }
     }
 }

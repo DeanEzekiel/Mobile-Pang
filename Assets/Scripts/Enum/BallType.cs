@@ -6,5 +6,6 @@
         Medium,
         Small,
         XSmall,
+        None
     }
 }

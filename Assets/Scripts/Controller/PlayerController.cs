@@ -32,7 +32,11 @@ namespace MobilePang.Controller
         #region Implementation
         private void MovementControl()
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                Shoot();
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 MoveTo(Direction.Left);
             }
@@ -49,7 +53,7 @@ namespace MobilePang.Controller
 
         private void Shoot()
         {
-            print("Test Shoot");
+            Controller.Ammo.LaunchAmmo();
         }
         #endregion
     }
