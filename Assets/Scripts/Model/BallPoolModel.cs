@@ -12,6 +12,8 @@ namespace MobilePang.Model
         #region Fields
         private List<BallView> _pooledBalls = new List<BallView>();
 
+        public int BallTracker = 0;
+
         [SerializeField]
         private BallView BallPrefab;
 
@@ -44,10 +46,38 @@ namespace MobilePang.Model
             {
                 if (!_pooledBalls[i].gameObject.activeInHierarchy)
                 {
+                    BallTracker++;
                     return _pooledBalls[i];
                 }
             }
             return null;
+        }
+
+        public void ResetPool()
+        {
+            for (int i = 0; i < Model.GetPoolSize(PoolableObject.Ball); i++)
+            {
+                if (_pooledBalls[i].gameObject.activeInHierarchy)
+                {
+                    _pooledBalls[i].gameObject.SetActive(false);
+                }
+            }
+            BallTracker = 0;
+        }
+
+        public void PoppedBall()
+        {
+            BallTracker--;
+
+            if (BallTracker == 0)
+            {
+                Controller.UI.OnLevelCleared();
+            }
+
+        }
+        public void AddTrackedBall(int count)
+        {
+            BallTracker += count;
         }
         #endregion
     }

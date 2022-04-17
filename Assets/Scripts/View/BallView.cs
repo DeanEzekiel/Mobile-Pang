@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MobilePang;
 using MobilePang.Model;
+using MobilePang.Controller;
 
 namespace MobilePang.View
 {
@@ -23,7 +24,21 @@ namespace MobilePang.View
 
         private void OnEnable()
         {
+            UIController.MoveBalls += SetGravityScale;
+
             SetBall();
+            if (Model.Player.IsPlaying)
+            {
+                SetGravityScale();
+            }
+            else
+            {
+                _rb.gravityScale = 0;
+            }
+        }
+        private void OnDisable()
+        {
+            UIController.MoveBalls -= SetGravityScale;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -38,6 +53,9 @@ namespace MobilePang.View
                 {
                     DivideBall();
                 }
+
+                // calling PoppedBall would decrease the tracker of active balls
+                Model.BallPool.PoppedBall();
 
                 // deactivate this ball
                 gameObject.SetActive(false);
@@ -58,6 +76,11 @@ namespace MobilePang.View
         #endregion
 
         #region Implementation
+        private void SetGravityScale()
+        {
+            _rb.gravityScale = 1;
+        }
+
         public void SetBallType(BallType ballType)
         {
             _type = ballType;

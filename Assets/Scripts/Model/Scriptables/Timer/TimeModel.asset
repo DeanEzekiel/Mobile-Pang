@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59e4ca036245409eb7eda1c65de81b0, type: 3}
   m_Name: TimeModel
   m_EditorClassIdentifier: 
-  TimeRemaining: 100
-  IsTimeTicking: 0
+  TimeRemaining: 68.64807
+  IsTimeTicking: 1

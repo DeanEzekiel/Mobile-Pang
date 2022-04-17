@@ -17,6 +17,21 @@ namespace MobilePang.View
         {
             m_Rigidbody = GetComponent<Rigidbody2D>();
         }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag(Tag.BALL))
+            {
+                Controller.DeductLife();
+                if (Model.Player.Life == 0)
+                {
+                    Controller.UI.OnGameOver();
+                }
+                else
+                {
+                    Controller.UI.OnLevelFailed();
+                }
+            }
+        }
         #endregion
 
         #region Implementation

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Player1Model
   m_EditorClassIdentifier: 
   Life: 3
-  _score: 0
-  _multiplier: 0
+  Score: 0
+  Multiplier: 0
   Speed: 6
   ShootCooldown: 0.5
   IsProtected: 0
+  IsPlaying: 0

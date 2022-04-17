@@ -40,6 +40,17 @@ namespace MobilePang.Model
             }
             return null;
         }
+
+        public void ResetPool()
+        {
+            for (int i = 0; i < Model.GetPoolSize(PoolableObject.Ammo); i++)
+            {
+                if (_pooledAmmos[i].gameObject.activeInHierarchy)
+                {
+                    _pooledAmmos[i].gameObject.SetActive(false);
+                }
+            }
+        }
         #endregion
     }
 }

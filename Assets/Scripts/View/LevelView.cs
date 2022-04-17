@@ -24,6 +24,9 @@ namespace MobilePang.View
                 // activate the ball
                 _lstBalls[i].gameObject.SetActive(true);
             }
+
+            //add the balls to the tracker
+            Model.BallPool.AddTrackedBall(_lstBalls.Count);
         }
 
         [ContextMenu("Save children with Tag Ball")]

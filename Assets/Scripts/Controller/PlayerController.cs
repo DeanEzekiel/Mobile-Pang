@@ -48,12 +48,27 @@ namespace MobilePang.Controller
 
         private void MoveTo(Direction direction)
         {
-            View.Player.Move(direction);
+            if (Controller.Time.IsTimeTicking() && Model.Player.IsPlaying)
+            {
+                View.Player.Move(direction);
+            }
         }
 
         private void Shoot()
         {
-            Controller.Ammo.LaunchAmmo();
+            if (Controller.Time.IsTimeTicking() && Model.Player.IsPlaying)
+            {
+                Controller.Ammo.LaunchAmmo();
+            }
+        }
+
+        public void StartPlaying()
+        {
+            Model.Player.IsPlaying = true;
+        }
+        public void HaltPlaying()
+        {
+            Model.Player.IsPlaying = false;
         }
         #endregion
     }

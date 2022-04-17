@@ -25,7 +25,7 @@ namespace MobilePang.View
         #endregion
 
         #region Unity Callbacks
-        private void Start()
+        private void Awake()
         {
             _btnShoot.onClick.AddListener(OnShoot);
         }

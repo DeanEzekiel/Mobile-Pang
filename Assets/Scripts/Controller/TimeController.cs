@@ -27,6 +27,16 @@ namespace MobilePang.Controller
                 else
                 {
                     FreezeTimer();
+
+                    Controller.DeductLife();
+                    if (Model.Player.Life == 0)
+                    {
+                        Controller.UI.OnGameOver();
+                    }
+                    else
+                    {
+                        Controller.UI.OnLevelFailed();
+                    }
                 }
             }
         }
@@ -48,6 +58,12 @@ namespace MobilePang.Controller
         {
             Model.Time.FreezeTimer();
         }
+
+        public bool IsTimeTicking()
+        {
+            return Model.Time.Timer.IsTimeTicking;
+        }
+
         #endregion
     }
 }

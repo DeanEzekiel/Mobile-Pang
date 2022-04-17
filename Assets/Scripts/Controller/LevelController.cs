@@ -28,6 +28,8 @@ namespace MobilePang.Controller
 
             Model.Level.DeactivateLevelWithIndex(index);
             Model.Level.ActivateLevelWithIndex(nextIndex);
+
+            SetLevel(Model.Level.CurrentLevel + 1);
         }
 
         public void PreviousLevel()
@@ -37,6 +39,16 @@ namespace MobilePang.Controller
 
             Model.Level.DeactivateLevelWithIndex(index);
             Model.Level.ActivateLevelWithIndex(prevIndex);
+
+            SetLevel(Model.Level.CurrentLevel - 1);
+        }
+
+        public void DeactivateLevels()
+        {
+            for(int i = 0; i < Model.Level.Levels.Count; i++)
+            {
+                Model.Level.DeactivateLevelWithIndex(i);
+            }
         }
     }
 }

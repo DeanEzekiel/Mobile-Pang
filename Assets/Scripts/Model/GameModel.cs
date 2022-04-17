@@ -10,8 +10,6 @@ namespace MobilePang.Model
     {
         #region Fields
         [SerializeField]
-        private int _score = 0;
-        private int _multiplier = 0;
         public const float StreakSec = 1f;
 
         [Tooltip("needed to determine if the multiplier sets back to 0 or adds 1")]
@@ -53,9 +51,21 @@ namespace MobilePang.Model
         [Header("Ball Force")]
         [SerializeField]
         public float BallSlowFactor = 0.3f;
+
+        public Mode GameMode;
+
+        public UIModel UI;
         #endregion
 
         #region Unity Callbacks
+        private void Awake()
+        {
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+            GameMode = Mode.Mobile;
+#else
+            GameMode = Mode.PC;
+#endif
+        }
         private void OnEnable()
         {
             GameController.ResetPlayer += ResetPlayer;
@@ -68,12 +78,17 @@ namespace MobilePang.Model
         #endregion
 
         #region Implementation
+        [ContextMenu("Reset Player Values")]
         private void ResetPlayer()
         {
             Player.Life = _initPlayer.Life;
+            Player.Score = _initPlayer.Score;
+            Player.Multiplier = _initPlayer.Multiplier;
+
             Player.Speed = _initPlayer.Speed;
             Player.ShootCooldown = _initPlayer.ShootCooldown;
             Player.IsProtected = _initPlayer.IsProtected;
+            Player.IsPlaying = _initPlayer.IsPlaying;
         }
 
         public int GetPoolSize(PoolableObject @object)
@@ -128,21 +143,21 @@ namespace MobilePang.Model
 
         public void AddMultiplier()
         {
-            _multiplier++;
+            Player.Multiplier++;
         }
         public void ResetMultiplier()
         {
-            _multiplier = 0;
+            Player.Multiplier = 0;
         }
 
         public void AddScore(int pointsEarned)
         {
-            if(_multiplier > 1)
+            if(Player.Multiplier > 1)
             {
-                pointsEarned *= _multiplier;
+                pointsEarned *= Player.Multiplier;
             }
 
-            _score += (pointsEarned);
+            Player.Score += (pointsEarned);
         }
         #endregion
     }

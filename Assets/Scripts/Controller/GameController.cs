@@ -11,14 +11,11 @@ namespace MobilePang.Controller
         #region Controllers
         [SerializeField]
         private PlayerController Player;
-        [SerializeField]
         public AmmoController Ammo;
-        [SerializeField]
         public BallController Ball;
-        [SerializeField]
         public TimeController Time;
-        [SerializeField]
         public LevelController Level;
+        public UIController UI;
         #endregion
 
         #region Events
@@ -26,11 +23,15 @@ namespace MobilePang.Controller
         #endregion
 
         #region Unity Callbacks
+        private void Start()
+        {
+            ResetPlayerModel();
+        }
         #endregion
 
         #region Implementation
         [ContextMenu("Reset Player Model")]
-        private void ResetPlayerModel()
+        public void ResetPlayerModel()
         {
             ResetPlayer?.Invoke();
         }
@@ -38,6 +39,44 @@ namespace MobilePang.Controller
         public void AddPoints(int pointsEarned)
         {
             Model.AddScore(pointsEarned);
+            Controller.UI.UpdateHUDScore();
+        }
+
+        public void DeductLife()
+        {
+            Model.Player.Life--;
+            Controller.UI.UpdateHUDLives();
+        }
+
+        public void StartPlaying()
+        {
+            Player.StartPlaying();
+        }
+        public void HaltPlaying()
+        {
+            Player.HaltPlaying();
+        }
+
+        public void PauseGame()
+        {
+            UnityEngine.Time.timeScale = 0;
+        }
+
+        public void ResumeGame()
+        {
+            UnityEngine.Time.timeScale = 1;
+        }
+
+        public void ExitGame()
+        {
+            //End Game
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
+            Application.OpenURL(webplayerQuitURL);
+#else
+            Application.Quit();
+#endif
         }
         #endregion
     }
