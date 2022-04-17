@@ -19,9 +19,12 @@ namespace MobilePang.Model
 
         #endregion
 
-        #region HUD Texts
+        #region Texts
+        [Header("TextMesh")]
         public TextMeshProUGUI HUDLives;
         public TextMeshProUGUI HUDScore;
+        public TextMeshProUGUI LevelClearBoard;
+        public TextMeshProUGUI GameOverBoard;
         #endregion
 
         #region Panels / Containers

@@ -195,6 +195,7 @@ namespace MobilePang.Controller
         {
             DeactivateAllPanels();
             Model.UI.LevelClearedPanel.Activate();
+            UpdateLevelClearBoard();
         }
 
         public void OnLevelFailed()
@@ -208,6 +209,7 @@ namespace MobilePang.Controller
         {
             DeactivateAllPanels();
             Model.UI.GameOverPanel.Activate();
+            UpdateGameOberBoard();
         }
 
         public void UpdateHUDLives()
@@ -217,6 +219,16 @@ namespace MobilePang.Controller
         public void UpdateHUDScore()
         {
             Model.UI.HUDScore.text = Model.Player.Score.ToString();
+        }
+        public void UpdateLevelClearBoard()
+        {
+            Model.UI.LevelClearBoard.text = $"Score: {Model.Player.Score}\n" +
+                $"Lives Left: {Model.Player.Life}";
+        }
+        public void UpdateGameOberBoard()
+        {
+            Model.UI.GameOverBoard.text = $"Final Score: {Model.Player.Score}\n" +
+                $"Level Reached: {Model.Level.CurrentLevel}";
         }
         #endregion
     }
