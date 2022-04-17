@@ -19,6 +19,10 @@ namespace MobilePang.Model
         #endregion
 
         #region Models & Scriptables
+        public TimeModel Time;
+
+        public LevelModel Level;
+
         [Header("Player Data")]
         public PlayerModel_SO Player;
         [SerializeField]

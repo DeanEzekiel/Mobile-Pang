@@ -15,6 +15,10 @@ namespace MobilePang.Controller
         public AmmoController Ammo;
         [SerializeField]
         public BallController Ball;
+        [SerializeField]
+        public TimeController Time;
+        [SerializeField]
+        public LevelController Level;
         #endregion
 
         #region Events

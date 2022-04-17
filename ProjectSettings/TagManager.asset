@@ -9,6 +9,7 @@ TagManager:
   - Block
   - Bullet
   - Floor
+  - Level
   layers:
   - Default
   - TransparentFX

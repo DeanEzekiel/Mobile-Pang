@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Medium BallModel
   m_EditorClassIdentifier: 
   Type: 1
-  Size: 0.5
+  Size: 0.6
   Points: 100

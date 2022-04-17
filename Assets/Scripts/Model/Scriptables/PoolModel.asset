@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffef4fc3ef5b841808d072a86d7d1b2b, type: 3}
   m_Name: PoolModel
   m_EditorClassIdentifier: 
-  Ammos: 10
+  Ammos: 20
   Balls: 20

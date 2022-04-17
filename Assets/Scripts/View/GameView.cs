@@ -7,6 +7,7 @@ namespace MobilePang.View
 {
     public class GameView : MVCHelper
     {
+        public TimeUIView Time;
         public PlayerView Player;
 
         public Transform AmmoPoolContainer;

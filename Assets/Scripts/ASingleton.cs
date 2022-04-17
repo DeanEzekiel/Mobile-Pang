@@ -32,7 +32,7 @@ namespace MobilePang
         protected virtual void Awake()
         {
             InitSingleton();
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
 
         private void InitSingleton()
@@ -41,7 +41,7 @@ namespace MobilePang
             {
                 Debug.LogWarning($"Cannot have more than 1 instances. " +
                     $"Destroying {gameObject.name}", gameObject);
-                Destroy(gameObject);
+                Destroy(this);
             }
         }
     }

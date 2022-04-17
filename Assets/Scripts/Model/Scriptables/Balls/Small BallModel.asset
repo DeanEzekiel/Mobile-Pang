@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Small BallModel
   m_EditorClassIdentifier: 
   Type: 2
-  Size: 0.25
+  Size: 0.3
   Points: 150

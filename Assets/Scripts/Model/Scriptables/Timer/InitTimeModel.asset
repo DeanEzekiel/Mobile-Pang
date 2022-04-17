@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a670d3dad9c2d46b6916053e35612db9, type: 3}
-  m_Name: XSmall BallModel
+  m_Script: {fileID: 11500000, guid: d59e4ca036245409eb7eda1c65de81b0, type: 3}
+  m_Name: InitTimeModel
   m_EditorClassIdentifier: 
-  Type: 3
-  Size: 0.15
-  Points: 200
+  TimeRemaining: 100
+  IsTimeTicking: 0

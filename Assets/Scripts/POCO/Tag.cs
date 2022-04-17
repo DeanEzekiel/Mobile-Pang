@@ -8,5 +8,6 @@
         public static string BALL = "Ball";
         public static string BLOCK = "Block";
         public static string AMMO = "Bullet";
+        public static string LEVEL = "Level";
     }
 }
