@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MobilePang;
+using MobilePang.Controller;
 using System;
 
 namespace MobilePang.View
@@ -30,6 +31,15 @@ namespace MobilePang.View
             _btnShoot.onClick.AddListener(OnShoot);
         }
 
+        private void OnEnable()
+        {
+            UIController.ReleaseMobileButtons += ReleaseHold;
+        }
+        private void OnDisable()
+        {
+            UIController.ReleaseMobileButtons -= ReleaseHold;
+        }
+
         private void FixedUpdate()
         {
             if (_btnLeft.IsHeld)
@@ -44,6 +54,11 @@ namespace MobilePang.View
         #endregion
 
         #region Implementation
+        public void ReleaseHold()
+        {
+            _btnLeft.IsHeld = false;
+            _btnRight.IsHeld = false;
+        }
         private void OnShoot()
         {
             Shoot?.Invoke();

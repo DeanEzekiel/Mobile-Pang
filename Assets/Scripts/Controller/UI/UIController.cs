@@ -11,6 +11,7 @@ namespace MobilePang.Controller
     {
         #region Events
         public static event Action MoveBalls;
+        public static event Action ReleaseMobileButtons;
         #endregion
 
         #region Unity Callbacks
@@ -170,6 +171,8 @@ namespace MobilePang.Controller
 
         public void OnPause()
         {
+            ReleaseMobileButtons?.Invoke();
+
             Controller.PauseGame();
             Model.UI.PausedPanel.Activate();
         }
@@ -193,6 +196,8 @@ namespace MobilePang.Controller
 
         public void OnLevelCleared()
         {
+            ReleaseMobileButtons?.Invoke();
+
             DeactivateAllPanels();
             Model.UI.LevelClearedPanel.Activate();
             UpdateLevelClearBoard();
@@ -200,6 +205,8 @@ namespace MobilePang.Controller
 
         public void OnLevelFailed()
         {
+            ReleaseMobileButtons?.Invoke();
+
             DeactivateAllPanels();
             Model.UI.LevelFailedPanel.Activate();
             Model.UI.LevelFailedPanel.WaitThenRestartLevel();
@@ -207,9 +214,11 @@ namespace MobilePang.Controller
 
         public void OnGameOver()
         {
+            ReleaseMobileButtons?.Invoke();
+
             DeactivateAllPanels();
             Model.UI.GameOverPanel.Activate();
-            UpdateGameOberBoard();
+            UpdateGameOverBoard();
         }
 
         public void UpdateHUDLives()
@@ -225,7 +234,7 @@ namespace MobilePang.Controller
             Model.UI.LevelClearBoard.text = $"Score: {Model.Player.Score}\n" +
                 $"Lives Left: {Model.Player.Life}";
         }
-        public void UpdateGameOberBoard()
+        public void UpdateGameOverBoard()
         {
             Model.UI.GameOverBoard.text = $"Final Score: {Model.Player.Score}\n" +
                 $"Level Reached: {Model.Level.CurrentLevel}";
